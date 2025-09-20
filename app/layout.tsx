@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/providers/themeProvider";
+import { sleep } from "@/lib/utils";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -10,17 +11,21 @@ export const metadata: Metadata = {
   description: "Youtube Music Clone App",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  // console.log("Before RootLayout sleep------------");
+  // await sleep(2000);
+  // console.log("After RootLayout sleep------------");
+
   return (
     <html lang="ko">
       <body className={inter.className}>
         <ThemeProvider
           attribute="class"
-          defaultTheme="system"
+          defaultTheme="dark"
           enableSystem
           disableTransitionOnChange
         >
