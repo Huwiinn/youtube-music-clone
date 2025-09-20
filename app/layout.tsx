@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/providers/themeProvider";
-import { sleep } from "@/lib/utils";
+// import { sleep } from "@/lib/utils";
+import Sidebar from "@/components/Sidebar";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,7 +22,7 @@ export default async function RootLayout({
   // console.log("After RootLayout sleep------------");
 
   return (
-    <html lang="ko">
+    <html lang="en">
       <body className={inter.className}>
         <ThemeProvider
           attribute="class"
@@ -29,7 +30,7 @@ export default async function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          {children}
+          <Sidebar>{children}</Sidebar>
         </ThemeProvider>
       </body>
     </html>
