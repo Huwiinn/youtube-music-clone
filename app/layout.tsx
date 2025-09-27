@@ -22,7 +22,7 @@ export default async function RootLayout({
   // console.log("After RootLayout sleep------------");
 
   return (
-    <html lang="en">
+    <html lang="ko">
       <body className={inter.className}>
         <ThemeProvider
           attribute="class"

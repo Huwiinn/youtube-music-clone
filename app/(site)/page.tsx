@@ -1,12 +1,12 @@
-import { sleep } from "@/lib/utils";
 import React from "react";
 
 const page = async () => {
-  // console.log("Before homepage sleep------------");
-  // await sleep(5000);
-  // console.log("After homepage sleep------------");
-
-  return <div>page</div>;
+  return (
+    <div className="min-h-[600px]">
+      main page
+      <div className="h-[1920px] bg-red-200 opacity-20" />
+    </div>
+  );
 };
 
 export default page;
