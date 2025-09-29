@@ -1,10 +1,11 @@
 import React from "react";
+import Category from "./components/Category";
 
 const page = async () => {
   return (
     <div className="min-h-[600px]">
-      main page
-      <div className="h-[1920px] bg-red-200 opacity-20" />
+      <div className="mt-9"></div>
+      <Category />
     </div>
   );
 };
