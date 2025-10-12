@@ -10,7 +10,6 @@ const Category = () => {
 
   const data = homeCategoryList;
   const onClickCategory = (item: any) => {
-    console.log("item : ", item);
     if (homeCategory === item.label) {
       setHomeImgSrc("");
       setHomeCategory("");
@@ -21,7 +20,7 @@ const Category = () => {
   };
 
   useEffect(() => {
-    console.log("homeCategory, headerImgSrc : ", homeCategory, headerImgSrc);
+    // console.log("homeCategory, headerImgSrc : ", homeCategory, headerImgSrc);
   }, [setHomeCategory, setHomeImgSrc]);
 
   return (
