@@ -14,7 +14,7 @@ const PlaylistNav = ({ playlist }: { playlist: IPlaylist }) => {
   const { id, owner, playlistName, songList } = playlist;
 
   const onClick = () => {
-    console.log("Playlist clicked");
+    // console.log("Playlist clicked");
     // todo: play music
   };
 

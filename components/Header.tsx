@@ -42,7 +42,7 @@ const Header = ({ children }: { children: React.ReactNode }) => {
   useEffect(() => {
     const handleScroll = () => {
       const scrollValue: number | undefined = headRef?.current?.scrollTop;
-      console.log(">scrollValue", scrollValue);
+      // console.log(">scrollValue", scrollValue);
       setIsScrolled(scrollValue !== 0);
     };
 
