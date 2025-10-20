@@ -1,0 +1,64 @@
+{
+  // TypeScript 성능 최적화
+  "typescript.tsserver.maxTsServerMemory": 4096,
+  "typescript.disableAutomaticTypeAcquisition": true,
+  "typescript.surveys.enabled": false,
+
+  // ESLint 성능 최적화
+  "eslint.enable": true,
+  "eslint.workingDirectories": [{ "mode": "auto" }],
+  "eslint.options": {
+    "cache": true,
+    "cacheLocation": ".next/cache/.eslintcache"
+  },
+
+  // Prettier 설정
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit"
+  },
+
+  // 파일 감시 제외 (성능 향상)
+  "files.watcherExclude": {
+    "**/.git/objects/**": true,
+    "**/.git/subtree-cache/**": true,
+    "**/node_modules/**": true,
+    "**/.next/**": true,
+    "**/out/**": true,
+    "**/dist/**": true,
+    "**/.cache/**": true
+  },
+
+  // 검색 제외
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/.next": true,
+    "**/out": true,
+    "**/dist": true,
+    "**/.cache": true,
+    "**/package-lock.json": true,
+    "**/yarn.lock": true
+  },
+
+  // 파일 연관성
+  "files.associations": {
+    "*.css": "tailwindcss"
+  },
+
+  // Tailwind CSS IntelliSense
+  "tailwindCSS.experimental.classRegex": [
+    ["cva\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]"],
+    ["cn\\(([^)]*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)"]
+  ],
+
+  // 기타 성능 최적화
+  "files.exclude": {
+    "**/.git": true,
+    "**/.DS_Store": true,
+    "**/node_modules": false
+  },
+  "editor.quickSuggestions": {
+    "strings": true
+  }
+}
