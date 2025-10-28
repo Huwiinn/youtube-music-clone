@@ -19,11 +19,15 @@ export function getRandomElementFromArray(arr: any[]) {
 export function chunkArray(arr: any[], chunkSize: number) {
   // resultArray => [ [], [] , [], [] ... ]
   const resultArray = [];
-  
+
   for (let i = 0; i < arr.length; i += chunkSize) {
     const chunk = arr.slice(i, i + chunkSize);
     resultArray.push(chunk);
   }
 
   return resultArray;
+}
+
+export function genreRandomHex() {
+  return "#" + ((Math.random() * 0xffffff) << 0).toString(16).padStart(6, "0");
 }
