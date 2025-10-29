@@ -28,12 +28,18 @@ const PlayListCard = ({ playList }: PlayListCardProps) => {
     // Todo play
   };
 
-  const defaultImgSrc: string = "https://images.unsplash.com/photo-1707833558984-3293e794031c";
+  const defaultImgSrc: string =
+    "https://images.unsplash.com/photo-1707833558984-3293e794031c";
 
   return (
     <article className="h-[240px] cursor-pointer group">
       <section onClick={onClickCard} className="relative h-[136px]">
-        <Image src={imgSrc || defaultImgSrc} fill alt="thumbnail" className="object-cover" />
+        <Image
+          src={imgSrc || defaultImgSrc}
+          fill
+          alt="thumbnail"
+          className="object-cover rounded-md"
+        />
         <div className="hidden relative group-hover:block bg-gradient-to-b from-[rgba(0,0,0,0.8)] top-0 w-full h-full">
           <div className="absolute top-4 right-4">
             <IconButton icon={<MdMoreVert size={20} />} />
