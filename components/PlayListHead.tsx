@@ -8,7 +8,7 @@ import { getRandomElementFromArray } from "@/lib/utils";
 import WhiteButton from "./elements/WhiteButton";
 import DarkButton from "./elements/DarkButton";
 
-const PlayListHead = ({ playlist = {} } = {}) => {
+const PlayListHead = ({ playlist }: any) => {
   const { playlistName, owner, songList } = playlist;
 
   const randomSong = getRandomElementFromArray(songList);

@@ -21,14 +21,14 @@ const Category = () => {
     "앨범",
     "아티스트",
   ];
-  const { homeCategory, setHomeCategory, setHomeImgSrc } = useUIState();
+  const { homeCategory, setHomeCategory, setHeaderImgSrc } = useUIState();
   const [showStatusBar, setShowStatusBar] = React.useState(true);
   const [showActivityBar, setShowActivityBar] = React.useState(false);
   const [showPanel, setShowPanel] = React.useState(false);
 
   useEffect(() => {
     // console.log("homeCategory, headerImgSrc : ", homeCategory, headerImgSrc);
-  }, [setHomeCategory, setHomeImgSrc]);
+  }, [setHomeCategory, setHeaderImgSrc]);
 
   return (
     <div className="flex justify-between items-center gap-4 flex-wrap">

@@ -5,23 +5,23 @@ import { cn } from "@/lib/utils";
 import React, { useEffect } from "react";
 
 const Category = () => {
-  const { homeCategory, headerImgSrc, setHomeCategory, setHomeImgSrc } =
+  const { homeCategory, headerImgSrc, setHomeCategory, setHeaderImgSrc } =
     useUIState();
 
   const data = homeCategoryList;
   const onClickCategory = (item: any) => {
     if (homeCategory === item.label) {
-      setHomeImgSrc("");
+      setHeaderImgSrc("");
       setHomeCategory("");
     } else {
-      setHomeImgSrc(item.src);
+      setHeaderImgSrc(item.src);
       setHomeCategory(item.label);
     }
   };
 
   useEffect(() => {
     // console.log("homeCategory, headerImgSrc : ", homeCategory, headerImgSrc);
-  }, [setHomeCategory, setHomeImgSrc]);
+  }, [setHomeCategory, setHeaderImgSrc]);
 
   return (
     <ul className="max-w-full overflow-x-auto flex gap-4">
