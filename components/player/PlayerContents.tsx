@@ -1,17 +1,24 @@
 import React from "react";
 import { Slider as PlayerSlider } from "@/components/ui/playerSlider";
 import { useAudio } from "react-use";
-import { IoPlaySkipBackSharp, IoPlaySkipForwardSharp } from "react-icons/io5";
-import { AiOutlinePause } from "react-icons/ai";
+import {
+  IoPlaySkipBackSharp,
+  IoPlaySkipForwardSharp,
+  IoShuffle,
+  IoVolumeHighOutline,
+} from "react-icons/io5";
+import { AiFillCaretUp, AiOutlinePause } from "react-icons/ai";
 import usePlayerState from "@/hooks/usePlayerState";
 import { ClipLoader } from "react-spinners";
 import { RiPlayFill } from "react-icons/ri";
+import Image from "next/image";
+import { RxLoop } from "react-icons/rx";
 
 const PlayerContents = () => {
   const { activeSong } = usePlayerState();
   const [audio, state, controls, ref] = useAudio({
     src: activeSong?.src as string,
-    autoPlay: true,
+    autoPlay: false,
   });
 
   const isLoading = activeSong?.src && state.buffered?.length === 0;
@@ -64,8 +71,36 @@ const PlayerContents = () => {
             onClick={onClickNextBtn}
           />
         </div>
-        <article></article>
-        <div></div>
+        <article>
+          <div className="flex items-center gap-4">
+            <div className="relative w-10 h-10">
+              <Image
+                fill
+                className="object-cover"
+                src={activeSong?.imageSrc as string}
+                alt={activeSong?.name as string}
+              />
+            </div>
+            <div className="flex flex-col">
+              <div>{activeSong?.name}</div>
+              <div className="text-sm text-neutral-400">
+                {activeSong?.channel} ・ 조회수 3,000회 ・ 좋아요 518개{" "}
+              </div>
+            </div>
+          </div>
+        </article>
+        <div className="flex w-full max-w-[200px] justify-between">
+          <div className="flex gap-2">
+            <div className="hidden lg:flex gap-2">
+              <IoVolumeHighOutline size={24} className="cursor-pointer" />
+              <IoShuffle size={24} className="cursor-pointer" />
+              <RxLoop size={24} className="cursor-pointer" />
+            </div>
+          </div>
+          <div>
+            <AiFillCaretUp size={24} className="cursor-pointer" />
+          </div>
+        </div>
       </section>
     </div>
   );
