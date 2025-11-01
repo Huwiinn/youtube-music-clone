@@ -10,7 +10,7 @@ import { RiPlayFill } from "react-icons/ri";
 const PlayerContents = () => {
   const { activeSong } = usePlayerState();
   const [audio, state, controls, ref] = useAudio({
-    src: activeSong?.src,
+    src: activeSong?.src as string,
     autoPlay: true,
   });
 
