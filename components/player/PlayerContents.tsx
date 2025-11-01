@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback, useEffect } from "react";
 import { Slider as PlayerSlider } from "@/components/ui/playerSlider";
 import { useAudio } from "react-use";
 import {
@@ -15,22 +15,58 @@ import Image from "next/image";
 import { RxLoop } from "react-icons/rx";
 
 const PlayerContents = () => {
-  const { activeSong } = usePlayerState();
+  const { activeSong, prevPlayerQueue, nextPlayerQueue, playBack, playNext } =
+    usePlayerState();
   const [audio, state, controls, ref] = useAudio({
     src: activeSong?.src as string,
-    autoPlay: false,
+    autoPlay: true,
   });
 
   const isLoading = activeSong?.src && state.buffered?.length === 0;
 
-  const onClickPreBtn = () => {};
+  const onClickPreBtn = () => {
+    if (state.playing && state.time > 10) {
+      controls.seek(0);
+      return;
+    }
+
+    if (prevPlayerQueue.length === 0) return;
+
+    playBack();
+  };
+
   const onClickStartBtn = () => {
-    controls.play();
+    if (activeSong) {
+      controls.play();
+    } else {
+      playNext();
+    }
   };
+
   const onClickPauseBtn = () => {
-    controls.pause();
+    // 스페이스바 누르면 일시정지되도록 함수 만들기. 그리고 한 번 더 누르면 다시 재생
+    if (activeSong && state.playing) {
+      controls.pause();
+    } else {
+      playNext();
+    }
   };
-  const onClickNextBtn = () => {};
+
+  const onClickNextBtn = useCallback(() => {
+    if (nextPlayerQueue.length === 0) {
+      controls.pause();
+    } else {
+      playNext();
+    }
+  }, [controls, nextPlayerQueue]);
+
+  useEffect(() => {
+    ref?.current?.addEventListener("ended", onClickNextBtn);
+
+    return () => {
+      ref?.current?.removeEventListener("ended", onClickNextBtn);
+    };
+  }, [ref, onClickNextBtn]);
 
   return (
     <div className="h-full w-full relative">
@@ -40,6 +76,7 @@ const PlayerContents = () => {
           defaultValue={[0]}
           value={[state.time]}
           onValueChange={(value) => controls.seek(value[0])} // value값 log 다시 찍어서 number type인지 확인 필요함
+          max={state.duration}
         />
       </div>
       {audio}
