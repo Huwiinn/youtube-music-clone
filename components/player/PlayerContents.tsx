@@ -28,7 +28,12 @@ const PlayerContents = () => {
   return (
     <div className="h-full w-full relative">
       <div className="absolute top-[-16px] w-full">
-        <PlayerSlider />
+        <PlayerSlider
+          className="w-full"
+          defaultValue={[0]}
+          value={[state.time]}
+          onValueChange={(value) => controls.seek(value[0])} // value값 log 다시 찍어서 number type인지 확인 필요함
+        />
       </div>
       {audio}
       <section className="flex justify-between items-center w-full h-full px-2 lg:px-6">
