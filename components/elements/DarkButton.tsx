@@ -8,7 +8,7 @@ const DarkButton = ({
   className,
   ...props
 }: {
-  icon: React.ReactNode;
+  icon?: React.ReactNode;
   label: string;
   className?: any;
   props?: any;

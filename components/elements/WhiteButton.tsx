@@ -10,7 +10,7 @@ const WhiteButton = ({
 }: {
   icon: React.ReactNode;
   label: string;
-  className: any;
+  className?: any;
   props?: any;
 }) => {
   return (

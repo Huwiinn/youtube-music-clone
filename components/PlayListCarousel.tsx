@@ -10,10 +10,10 @@ import {
 import PlayListCard from "./PlayListCard";
 
 interface PlayListCarouselProps {
-  title: string;
+  title?: string;
   subTitle?: string;
   thumbnail?: React.ReactNode;
-  playListArray?: Playlist[];
+  playListArray: Playlist[];
 }
 
 const PlayListCarousel: React.FC<PlayListCarouselProps> = ({

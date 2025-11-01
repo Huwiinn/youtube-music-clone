@@ -21,7 +21,7 @@ const PlayListCard = ({ playList }: PlayListCardProps) => {
   const imgSrc: string = getRandomElementFromArray(songList)?.imageSrc;
 
   const onClickCard = () => {
-    if (id) push(`playlist?list=${id}`);
+    if (id) push(`/playlist?list=${id}`);
   };
 
   const onClickPlay = () => {

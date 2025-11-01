@@ -44,7 +44,7 @@ const SongCardRowExpand: React.FC<SongCardRowExpandProps> = ({ song }) => {
           {channel}
         </div>
       </div>
-      <section className="hidden group-hover:flex absolute top-0 right-0 w-full h-12 justify-end items-center cursor-pointer w-[120px] bg-[rgba(0,0,0,0.6)]">
+      <section className="hidden group-hover:flex absolute top-0 right-0 h-12 justify-end items-center cursor-pointer w-[120px] bg-[rgba(0,0,0,0.6)]">
         <IconButton icon={<FiThumbsDown size={20} />} />
         <IconButton icon={<FiThumbsUp size={20} />} />
         <IconButton icon={<FiMoreVertical size={20} />} />
