@@ -8,12 +8,14 @@ import { useRouter } from "next/navigation";
 import { MdMoreVert } from "react-icons/md";
 import { FiPlay } from "react-icons/fi";
 import IconButton from "./elements/IconButton";
+import usePlayerState from "@/hooks/usePlayerState";
 
 interface PlayListCardProps {
   playList: Playlist;
 }
 
 const PlayListCard = ({ playList }: PlayListCardProps) => {
+  const { addSongList } = usePlayerState();
   const { id, owner, playlistName, songList = [] } = playList ?? {};
   const { push } = useRouter();
 
@@ -24,8 +26,9 @@ const PlayListCard = ({ playList }: PlayListCardProps) => {
     if (id) push(`/playlist?list=${id}`);
   };
 
-  const onClickPlay = () => {
-    // Todo play
+  const onClickPlay = (e: any) => {
+    e.stopPropagation();
+    addSongList(songList);
   };
 
   const defaultImgSrc: string =

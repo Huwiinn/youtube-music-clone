@@ -11,7 +11,7 @@ import PlaylistNav from "./PlaylistNav";
 
 const Navigator = () => {
   const pathname = usePathname();
-  // console.log("pathname : ", pathname);
+  
   const routes = useMemo(() => {
     return [
       {

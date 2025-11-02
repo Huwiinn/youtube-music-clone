@@ -7,11 +7,18 @@ import Image from "next/image";
 import { getRandomElementFromArray } from "@/lib/utils";
 import WhiteButton from "./elements/WhiteButton";
 import DarkButton from "./elements/DarkButton";
+import usePlayerState from "@/hooks/usePlayerState";
 
 const PlayListHead = ({ playlist }: any) => {
   const { playlistName, owner, songList } = playlist;
+  const { addSongList } = usePlayerState();
 
   const randomSong = getRandomElementFromArray(songList);
+
+  const onClickPlay = (e: any) => {
+    e.stopPropagation();
+    addSongList(songList);
+  };
 
   return (
     <section>
@@ -26,11 +33,13 @@ const PlayListHead = ({ playlist }: any) => {
             <div>{`${songList.length}곡 ・ 20분`}</div>
           </div>
           <ul className="hidden lg:flex flex gap- mt-4">
-            <WhiteButton
-              className={"w-[85px] text-sm"}
-              icon={<FiPlay />}
-              label="재생"
-            />
+            <div onClick={onClickPlay}>
+              <WhiteButton
+                className={"w-[85px] text-sm"}
+                icon={<FiPlay />}
+                label="재생"
+              />
+            </div>
             <DarkButton
               className={"w-[135px] text-sm"}
               icon={<FiFolderPlus />}
